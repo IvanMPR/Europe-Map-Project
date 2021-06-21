@@ -52,7 +52,7 @@ body {
   height: 38%;
   width: 100%;
   margin: 0 auto;
-  background: url(/img/Empty-flag.png) no-repeat center center/cover;
+  background: url(img/Empty-flag.png) no-repeat center center/cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
