@@ -79,11 +79,3 @@ function renderData(data) {
     2
   )}, Lng: ${data[0].latlng[1].toFixed(2)}`;
 }
-// console.log(
-//   fetch('https://restcountries.eu/rest/v2/name/macedonia')
-//     .then(function (response) {
-//       console.log(response);
-//       return response.json();
-//     })
-//     .then(data => console.log(data))
-// );
