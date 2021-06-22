@@ -72,19 +72,19 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin: 1rem auto;
+  margin: 0.8rem auto;
   padding-left: 1rem;
 }
 
 .label {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-style: italic;
   padding-left: 1rem;
   color: var(--main-dark-yellow-color);
 }
 
 .resolved {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-style: italic;
   padding-right: 2rem;
   font-weight: 800;
@@ -98,7 +98,7 @@ body {
   justify-content: space-between;
 }
 
-@media screen and (max-width: 1365px) {
+@media screen and (max-width: 1700px) {
   .info {
     margin: 0.5rem auto;
   }
