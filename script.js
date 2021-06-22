@@ -25,10 +25,8 @@ map.addEventListener('mouseout', function (e) {
 
 map.addEventListener('click', function (e) {
   if (e.target.id === 'Layer_1') return;
-  const currentCountry =
-    e.target.id.split('_')[0] === 'United'
-      ? 'United Kingdom'
-      : e.target.id.split('_')[0];
+  const currentCountry = checkId(e.target.id.split('_'));
+
   console.log(e.target.id.split('_'));
   const getDataFromApi = function (country) {
     fetch(`https://restcountries.eu/rest/v2/name/${country}`)
@@ -78,4 +76,7 @@ function renderData(data) {
   countryLocation.textContent = `Lat: ${data[0].latlng[0].toFixed(
     2
   )}, Lng: ${data[0].latlng[1].toFixed(2)}`;
+}
+function checkId(arr) {
+  return arr.filter(el => el[0] !== 'x' && el != +el).join(' ');
 }
