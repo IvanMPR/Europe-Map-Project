@@ -17,6 +17,7 @@ body {
   font-family: 'Ubuntu', sans-serif;
   font-size: 62.5%;
   background: url(img/Pattern-bgd.jpg);
+  position: relative;
 }
 
 .europe-map {
@@ -96,6 +97,22 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+}
+
+.link {
+  position: absolute;
+  top: 93%;
+  left: 50%;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  color: #21466c;
+  font-style: italic;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #ffc63a;
 }
 
 @media screen and (max-width: 1605px) {
