@@ -19,7 +19,18 @@ body {
   background: url(img/Pattern-bgd.jpg);
   position: relative;
 }
+/***** Utility Classes ***********/
 
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  transition: ease-in all 1s;
+}
+
+/****************************************/
 .europe-map {
   width: 100vh;
   margin-right: -0.25rem;
@@ -31,7 +42,8 @@ body {
   transition: all 0.35s ease;
 }
 
-/* ? **************************************** */
+/****************************************/
+
 .left-info-area {
   height: 95vh;
   width: 40%;
@@ -125,4 +137,55 @@ body {
   .resolved {
     font-size: 1.2rem;
   }
+}
+
+/* Initial Modal Styling */
+.initial-modal-background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(16, 35, 54, 0.8);
+  transition: all 1s ease;
+}
+
+.initial-modal-body {
+  /* background: rgba(255, 255, 255, 0.9); */
+  background: url(img/Pattern-bgd.jpg);
+  width: 30%;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  position: relative;
+}
+
+h3 {
+  color: #21466c;
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  font-style: italic;
+}
+
+.initial-modal-text {
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.4;
+  padding: 0.5rem;
+  color: var(--main-dark-blue-color);
+}
+
+.close-modal {
+  position: absolute;
+  top: 13%;
+  left: 93%;
+  font-size: 1.5rem;
+  transition: 0.2s color ease;
+  cursor: pointer;
+  color: var(--main-dark-blue-color);
+}
+
+.close-modal:hover {
+  color: var(--main-dark-yellow-color);
 }
