@@ -10,6 +10,24 @@ const countryCurrency = document.querySelector('.resolved.currency');
 const countryCapital = document.querySelector('.resolved.capital');
 const countryLocation = document.querySelector('.resolved.location');
 /* ********************************************** */
+const modal = document.querySelector('.initial-modal-background');
+const closeButton = document.querySelector('.close-modal');
+/* ********************************************** */
+window.addEventListener('load', function () {
+  modal.classList.remove('hidden');
+  modal.classList.add('visible');
+});
+
+function closeModal() {
+  modal.classList.remove('visible');
+  modal.classList.add('hidden');
+  modal.style.zIndex = '-5';
+}
+closeButton.addEventListener('click', closeModal);
+modal.addEventListener('click', function (e) {
+  console.log(e.target);
+  // if (e.target.classList.contains('initial-modal-body')) closeModal;
+});
 map.addEventListener('mouseover', function (e) {
   if (e.target.classList.contains('st1')) {
     document.getElementById(`${e.target.id}`).classList.remove('st1');
