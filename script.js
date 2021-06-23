@@ -34,7 +34,8 @@ map.addEventListener('click', function (e) {
         console.log(response);
         return response.json();
       })
-      .then(data => renderData(data));
+      .then(data => renderData(data))
+      .catch(err => console.error(err));
   };
 
   getDataFromApi(currentCountry);
