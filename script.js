@@ -9,6 +9,8 @@ const countryLanguage = document.querySelector('.resolved.language');
 const countryCurrency = document.querySelector('.resolved.currency');
 const countryCapital = document.querySelector('.resolved.capital');
 const countryLocation = document.querySelector('.resolved.location');
+const flagContainer = document.querySelector('.flag-container');
+const spinnerContainer = document.querySelector('.spinner-container');
 /* ********************************************** */
 const modal = document.querySelector('.initial-modal-background');
 const closeButton = document.querySelector('.close-modal');
@@ -26,7 +28,10 @@ function closeModal() {
 closeButton.addEventListener('click', closeModal);
 modal.addEventListener('click', function (e) {
   console.log(e.target);
-  // if (e.target.classList.contains('initial-modal-body')) closeModal;
+  if (e.target.classList.contains('visible')) closeModal();
+});
+window.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && modal.style.zIndex !== '-5') closeModal();
 });
 map.addEventListener('mouseover', function (e) {
   if (e.target.classList.contains('st1')) {
@@ -47,6 +52,8 @@ map.addEventListener('click', function (e) {
 
   console.log(e.target.id.split('_'));
   const getDataFromApi = function (country) {
+    // renderSpinner(flagContainer);
+    // showSpinner();
     fetch(`https://restcountries.eu/rest/v2/name/${country}`)
       .then(function (response) {
         console.log(response);
@@ -65,6 +72,7 @@ map.addEventListener('click', function (e) {
 function renderData(data) {
   console.log(data);
   console.log(`url(${data[0].flag})`);
+  // showSpinner();
   /* ********************************************** */
   flag.style.backgroundImage = `url(${data[0].flag})`;
   flag.style.backgroundPosition = `center`;
@@ -99,3 +107,27 @@ function renderData(data) {
 function checkId(arr) {
   return arr.filter(el => el[0] !== 'x' && el != +el).join(' ');
 }
+
+function showSpinner() {
+  if (flagContainer.style.backgroundImage.src === 'img/Empty-flag.png') {
+    spinnerContainer.style.zIndex = '10';
+  } else {
+    spinnerContainer.style.zIndex = '-10';
+  }
+}
+
+// function _clear() {
+//   this._parentElement.innerHTML = '';
+// }
+
+// function renderSpinner(element) {
+//   const markup = `
+// <div class="spinner-container">
+//   <img src="img/Spinner-yellow.png" alt="Spinning Loader" class="spinner" />
+// </div>;
+
+//   `;
+//   element.innerHTML = '';
+//   // this._clear();
+//   element.insertAdjacentHTML('afterbegin', markup);
+// }

@@ -67,8 +67,28 @@ body {
   background: url(img/Empty-flag.png) no-repeat center center/cover;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+  position: relative;
 }
 
+.spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(16, 35, 54, 0.8);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  display: grid;
+  place-content: center;
+  z-index: -5;
+}
+
+img.spinner {
+  width: 3.3rem;
+  height: 3.3rem;
+  animation: spinning-loader 2s linear infinite;
+}
 .divider-div {
   height: 1vw;
   background: url(img/Pattern-bgd.jpg);
@@ -187,4 +207,13 @@ h3 {
 
 .close-modal:hover {
   color: var(--main-dark-yellow-color);
+}
+
+@keyframes spinning-loader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
