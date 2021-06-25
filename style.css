@@ -146,7 +146,7 @@ img.spinner {
   color: #ffc63a;
 }
 
-@media screen and (max-width: 1605px) {
+@media screen and (max-width: 1700px) {
   .info {
     margin: 0.5rem auto;
   }
