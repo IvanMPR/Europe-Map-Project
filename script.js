@@ -131,3 +131,7 @@ function showSpinner() {
 //   // this._clear();
 //   element.insertAdjacentHTML('afterbegin', markup);
 // }
+var width = window.screen.availWidth;
+var height = window.screen.availHeight;
+console.log(width);
+console.log(height);
