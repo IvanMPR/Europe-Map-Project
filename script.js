@@ -9,8 +9,8 @@ const countryLanguage = document.querySelector('.resolved.language');
 const countryCurrency = document.querySelector('.resolved.currency');
 const countryCapital = document.querySelector('.resolved.capital');
 const countryLocation = document.querySelector('.resolved.location');
-const flagContainer = document.querySelector('.flag-container');
-const spinnerContainer = document.querySelector('.spinner-container');
+// const flagContainer = document.querySelector('.flag-container');
+// const spinnerContainer = document.querySelector('.spinner-container');
 /* ********************************************** */
 const modal = document.querySelector('.initial-modal-background');
 const closeButton = document.querySelector('.close-modal');
@@ -52,15 +52,15 @@ map.addEventListener('click', function (e) {
 
   console.log(e.target.id.split('_'));
   const getDataFromApi = function (country) {
-    // renderSpinner(flagContainer);
-    // showSpinner();
+    renderSpinner(flag);
+
     fetch(`https://restcountries.eu/rest/v2/name/${country}`)
       .then(function (response) {
         console.log(response);
         return response.json();
       })
       .then(data => renderData(data))
-      .catch(err => console.error(err));
+      .catch(err => renderError(flag, err));
   };
 
   getDataFromApi(currentCountry);
@@ -70,13 +70,14 @@ map.addEventListener('click', function (e) {
 // );
 // console.log(window.screen.availWidth - (window.outerWidth - window.innerWidth));
 function renderData(data) {
-  console.log(data);
-  console.log(`url(${data[0].flag})`);
+  // console.log(data);
+  // console.log(`url(${data[0].flag})`);
   // showSpinner();
   /* ********************************************** */
+  flag.innerHTML = '';
   flag.style.backgroundImage = `url(${data[0].flag})`;
-  flag.style.backgroundPosition = `center`;
-  flag.style.backgroundSize = `cover`;
+  // flag.style.backgroundPosition = `center`;
+  // flag.style.backgroundSize = `cover`;
   /* ********************************************** */
   countryName.textContent = data[0].name;
   countryContinent.textContent = data[0].subregion;
@@ -108,30 +109,39 @@ function checkId(arr) {
   return arr.filter(el => el[0] !== 'x' && el != +el).join(' ');
 }
 
-function showSpinner() {
-  if (flagContainer.style.backgroundImage.src === 'img/Empty-flag.png') {
-    spinnerContainer.style.zIndex = '10';
-  } else {
-    spinnerContainer.style.zIndex = '-10';
-  }
-}
-
 // function _clear() {
 //   this._parentElement.innerHTML = '';
 // }
 
-// function renderSpinner(element) {
-//   const markup = `
-// <div class="spinner-container">
-//   <img src="img/Spinner-yellow.png" alt="Spinning Loader" class="spinner" />
-// </div>;
+function renderSpinner(element) {
+  const markup = `
+<div class="spinner-container">
+  <img src="img/Spinner-blue.png" alt="Spinning Loader" class="spinner" />
+</div>;
 
-//   `;
-//   element.innerHTML = '';
-//   // this._clear();
-//   element.insertAdjacentHTML('afterbegin', markup);
-// }
-var width = window.screen.availWidth;
-var height = window.screen.availHeight;
-console.log(width);
-console.log(height);
+  `;
+  element.innerHTML = '';
+
+  element.insertAdjacentHTML('afterbegin', markup);
+}
+
+function renderError(element, err) {
+  const markup = ` <div class="error-container">
+  <p class="error-text">
+    Ooops...Something went wrong !
+  </p>
+  <p class="error-message">
+    ${err.message} !
+  </p>
+  <p class="error-message">
+    Please try again
+  </p>
+</div>`;
+  element.innerHTML = '';
+
+  element.insertAdjacentHTML('afterbegin', markup);
+}
+// var width = window.screen.availWidth;
+// var height = window.screen.availHeight;
+// console.log(width);
+// console.log(height);
