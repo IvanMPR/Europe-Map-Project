@@ -9,8 +9,7 @@ const countryLanguage = document.querySelector('.resolved.language');
 const countryCurrency = document.querySelector('.resolved.currency');
 const countryCapital = document.querySelector('.resolved.capital');
 const countryLocation = document.querySelector('.resolved.location');
-// const flagContainer = document.querySelector('.flag-container');
-// const spinnerContainer = document.querySelector('.spinner-container');
+const resolvedOutputs = document.querySelectorAll('.resolved');
 /* ********************************************** */
 const modal = document.querySelector('.initial-modal-background');
 const closeButton = document.querySelector('.close-modal');
@@ -20,19 +19,6 @@ window.addEventListener('load', function () {
   modal.classList.add('visible');
 });
 
-function closeModal() {
-  modal.classList.remove('visible');
-  modal.classList.add('hidden');
-  modal.style.zIndex = '-5';
-}
-closeButton.addEventListener('click', closeModal);
-modal.addEventListener('click', function (e) {
-  console.log(e.target);
-  if (e.target.classList.contains('visible')) closeModal();
-});
-window.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && modal.style.zIndex !== '-5') closeModal();
-});
 map.addEventListener('mouseover', function (e) {
   if (e.target.classList.contains('st1')) {
     document.getElementById(`${e.target.id}`).classList.remove('st1');
@@ -49,14 +35,11 @@ map.addEventListener('mouseout', function (e) {
 map.addEventListener('click', function (e) {
   if (e.target.id === 'Layer_1') return;
   const currentCountry = checkId(e.target.id.split('_'));
-
-  console.log(e.target.id.split('_'));
+  console.log(currentCountry);
   const getDataFromApi = function (country) {
     renderSpinner(flag);
-
     fetch(`https://restcountries.eu/rest/v2/name/${country}`)
       .then(function (response) {
-        console.log(response);
         return response.json();
       })
       .then(data => renderData(data))
@@ -65,19 +48,11 @@ map.addEventListener('click', function (e) {
 
   getDataFromApi(currentCountry);
 });
-// console.log(
-// window.screen.availHeight - (window.outerHeight - window.innerHeight)
-// );
-// console.log(window.screen.availWidth - (window.outerWidth - window.innerWidth));
+
 function renderData(data) {
-  // console.log(data);
-  // console.log(`url(${data[0].flag})`);
-  // showSpinner();
   /* ********************************************** */
   flag.innerHTML = '';
   flag.style.backgroundImage = `url(${data[0].flag})`;
-  // flag.style.backgroundPosition = `center`;
-  // flag.style.backgroundSize = `cover`;
   /* ********************************************** */
   countryName.textContent = data[0].name;
   countryContinent.textContent = data[0].subregion;
@@ -105,21 +80,17 @@ function renderData(data) {
     2
   )}, Lng: ${data[0].latlng[1].toFixed(2)}`;
 }
+
 function checkId(arr) {
   return arr.filter(el => el[0] !== 'x' && el != +el).join(' ');
 }
-
-// function _clear() {
-//   this._parentElement.innerHTML = '';
-// }
 
 function renderSpinner(element) {
   const markup = `
 <div class="spinner-container">
   <img src="img/Spinner-blue.png" alt="Spinning Loader" class="spinner" />
 </div>;
-
-  `;
+`;
   element.innerHTML = '';
 
   element.insertAdjacentHTML('afterbegin', markup);
@@ -140,7 +111,30 @@ function renderError(element, err) {
   element.innerHTML = '';
 
   element.insertAdjacentHTML('afterbegin', markup);
+
+  textContentOnFailedFetch();
 }
+
+function textContentOnFailedFetch() {
+  resolvedOutputs.forEach(paragraph => (paragraph.textContent = '???'));
+}
+//////////////////////////////////////////////////////////////////////////
+// Modal functionality
+//////////////////////////////////////////////////////////////////////////
+function closeModal() {
+  modal.classList.remove('visible');
+  modal.classList.add('hidden');
+  modal.style.zIndex = -5;
+}
+closeButton.addEventListener('click', closeModal);
+
+modal.addEventListener('click', function (e) {
+  if (e.target.classList.contains('visible')) closeModal();
+});
+window.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && modal.style.zIndex !== '-5') closeModal();
+});
+//////////////////////////////////////////////////////////////////////////
 // var width = window.screen.availWidth;
 // var height = window.screen.availHeight;
 // console.log(width);
