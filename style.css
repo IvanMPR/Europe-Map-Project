@@ -19,7 +19,9 @@ body {
   background: url(img/Pattern-bgd.jpg);
   position: relative;
 }
-/***** Utility Classes ***********/
+/* ///////////////////////////////////////////////////// */
+/* Utility Classes */
+/* ///////////////////////////////////////////////////// */
 .hidden {
   opacity: 0;
 }
@@ -28,8 +30,8 @@ body {
   opacity: 1;
   transition: ease-in all 1s;
 }
+/* ///////////////////////////////////////////////////// */
 
-/****************************************/
 .europe-map {
   width: 100vh;
   margin-right: -0.25rem;
@@ -41,7 +43,7 @@ body {
   transition: all 0.35s ease;
 }
 
-/****************************************/
+/* ///////////////////////////////////////////////////// */
 
 .left-info-area {
   height: 95vh;
@@ -69,7 +71,9 @@ body {
   border-top-right-radius: 1rem;
   position: relative;
 }
-
+/* ///////////////////////////////////////////////////// */
+/* Spinner container styling */
+/* ///////////////////////////////////////////////////// */
 .spinner-container {
   width: 100%;
   height: 100%;
@@ -94,7 +98,8 @@ img.spinner {
     transform: rotate(360deg);
   }
 }
-/* ******************************************************************* */
+/* ///////////////////////////////////////////////////// */
+
 /* Error Message Styling */
 .error-container {
   width: 100%;
@@ -114,7 +119,7 @@ img.spinner {
   color: var(--main-dark-blue-color);
   font-style: italic;
 }
-/* ******************************************************************* */
+/* ///////////////////////////////////////////////////// */
 
 .divider-div {
   height: 1vw;
@@ -173,19 +178,9 @@ img.spinner {
   color: #ffc63a;
 }
 
-@media screen and (max-width: 1708px) {
-  .info {
-    margin: 0.5rem auto;
-  }
-  .label {
-    font-size: 1.1rem;
-  }
-  .resolved {
-    font-size: 1.2rem;
-  }
-}
-
+/* ///////////////////////////////////////////////////// */
 /* Initial Modal Styling */
+/* ///////////////////////////////////////////////////// */
 .initial-modal-background {
   position: absolute;
   width: 100vw;
@@ -233,4 +228,19 @@ h3 {
 
 .close-modal:hover {
   color: var(--main-dark-yellow-color);
+}
+/* ///////////////////////////////////////////////////// */
+/* Adjusting render output for the 15 inch lap-top screen */
+/* ///////////////////////////////////////////////////// */
+
+@media screen and (max-width: 1708px) {
+  .info {
+    margin: 0.5rem auto;
+  }
+  .label {
+    font-size: 1.1rem;
+  }
+  .resolved {
+    font-size: 1.2rem;
+  }
 }
