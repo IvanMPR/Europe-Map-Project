@@ -43,11 +43,13 @@ map.addEventListener('click', function (e) {
   //////////////////////////////////////////////////////////////////////////
   const currentCountry = checkId(e.target.id.split('_'));
   //////////////////////////////////////////////////////////////////////////
+  
   const getDataFromApi = async function (country) {
     try {
       renderSpinner(flag);
       const response = await Promise.race([
-        fetch(`https://restcountries.eu/rest/v2/name/${country}`),
+        fetch(`https://api.countrylayer.com/v2/name/{country}
+    ? access_key = 1b3b9343c4887a256ef2a996fea0d56f & FullText=`),
         timeout(5),
       ]);
       const data = await response.json();
