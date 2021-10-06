@@ -48,8 +48,7 @@ map.addEventListener('click', function (e) {
     try {
       renderSpinner(flag);
       const response = await Promise.race([
-        fetch(`https://api.countrylayer.com/v2/name/{country}
-    ? access_key = 1b3b9343c4887a256ef2a996fea0d56f & FullText=`),
+        fetch(`https://restcountries.com/v2/name/{country}`),
         timeout(5),
       ]);
       const data = await response.json();
