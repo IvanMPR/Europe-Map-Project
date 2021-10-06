@@ -43,12 +43,12 @@ map.addEventListener('click', function (e) {
   //////////////////////////////////////////////////////////////////////////
   const currentCountry = checkId(e.target.id.split('_'));
   //////////////////////////////////////////////////////////////////////////
+
   const getDataFromApi = async function (country) {
     try {
       renderSpinner(flag);
       const response = await Promise.race([
         fetch(`https://restcountries.com/v2/name/${country}`),
-
         timeout(5),
       ]);
       const data = await response.json();
@@ -59,6 +59,7 @@ map.addEventListener('click', function (e) {
   };
   getDataFromApi(currentCountry);
 });
+
 //////////////////////////////////////////////////////////////////////////
 // Inserting and rendering data
 //////////////////////////////////////////////////////////////////////////
