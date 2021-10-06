@@ -47,7 +47,8 @@ map.addEventListener('click', function (e) {
     try {
       renderSpinner(flag);
       const response = await Promise.race([
-        fetch(`https://restcountries.eu/rest/v2/name/${country}`),
+        fetch(`https://restcountries.com/v2/name/${country}`),
+
         timeout(5),
       ]);
       const data = await response.json();
