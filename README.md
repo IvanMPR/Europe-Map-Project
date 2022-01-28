@@ -22,7 +22,4 @@ Errors will be displayed in the flag container.
 
 There is one @media query that decreases the font and the padding in the 
 info container, which makes rendering on the 15 inch lap-top screens ok.
-# Note
-There is a strange bug if you click on the country of Andorra. 
-Flag field remains blank, I checked with my map, id is correct.
-It has to be some problem with the API
+
